@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trenz", "Trenz\Trenz.csproj", "{907834E4-EABE-478B-927D-FD4227F13E7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{907834E4-EABE-478B-927D-FD4227F13E7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{6EDCA74F-6D07-4493-B08E-589A9DDA0FE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "Testing\Domain.Tests\Domain.Tests.csproj", "{1EE65E54-3F4A-4CE6-B5C6-3BB5EAC0FB14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{907834E4-EABE-478B-927D-FD4227F13E7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{907834E4-EABE-478B-927D-FD4227F13E7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{907834E4-EABE-478B-927D-FD4227F13E7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE65E54-3F4A-4CE6-B5C6-3BB5EAC0FB14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE65E54-3F4A-4CE6-B5C6-3BB5EAC0FB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE65E54-3F4A-4CE6-B5C6-3BB5EAC0FB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE65E54-3F4A-4CE6-B5C6-3BB5EAC0FB14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1EE65E54-3F4A-4CE6-B5C6-3BB5EAC0FB14} = {6EDCA74F-6D07-4493-B08E-589A9DDA0FE0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C923A99C-C3DA-4DEC-9527-9B6EE0347B6B}
