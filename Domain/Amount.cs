@@ -54,5 +54,10 @@ namespace PaulRoho.Trenz.Domain
         {
             return !Equals(left, right);
         }
+
+        public override string ToString()
+        {
+            return $"{Value}{Unit.Abbr}";
+        }
     }
 }
