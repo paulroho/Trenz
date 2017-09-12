@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace PaulRoho.Trenz.Domain
 {
@@ -13,9 +14,14 @@ namespace PaulRoho.Trenz.Domain
             PointInTime = pointInTime;
         }
 
+        public string ToString(IFormatProvider formatProvider)
+        {
+            return string.Format(formatProvider, "{0} @{1}", Amount, PointInTime);
+        }
+
         public override string ToString()
         {
-            return $"{Amount} @{PointInTime}";
+            return ToString(CultureInfo.CurrentUICulture);
         }
     }
 }

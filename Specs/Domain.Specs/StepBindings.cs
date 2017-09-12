@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -32,7 +33,7 @@ namespace PaulRoho.Trenz.Domain.Specs
         {
             var trend = _driver.Track.GetTrend(from, to);
 
-            expectedSamplesTable.CompareToSet(trend.Select(s => new {Sample = s.ToString()}), sequentialEquality: true);
+            expectedSamplesTable.CompareToSet(trend.Select(s => new {Sample = s.ToString(CultureInfo.InvariantCulture)}), sequentialEquality: true);
         }
 
         private Track CreateTrack(string trackName, Table paramTable)
