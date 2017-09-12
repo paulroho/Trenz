@@ -1,17 +1,16 @@
 ﻿using System;
-using Ploeh.AutoFixture;
+using System.Linq;
 
 namespace PaulRoho.Trenz.Domain.Tests.TestSupport
 {
-    public class Some
+    public static class Some
     {
         private static readonly Random Random = new Random(DateTime.Now.Second);
-        private static readonly Fixture Fixture = new Fixture();
 
-        public static Amount Amount => Fixture.Create<Amount>();
-        public static Unit Unit => Fixture.Create<Unit>();
-        public static string String(int length) => Fixture.Create<string>().Substring(0, length);
-        public static decimal Value => Fixture.Create<decimal>();
+        public static Amount Amount => new Amount(Some.Value, Some.Unit);
+        public static Unit Unit => new Unit(Some.String(5), Some.String(2));
+        public static string String(int length) => string.Join("", Enumerable.Range(1, length).Select(_ => (char) Random.Next('a', 'z')));
+        public static decimal Value => (decimal) Random.NextDouble();
         public static DateTime PointInTime => DateTime.Now;
     }
 }
