@@ -38,7 +38,7 @@ namespace PaulRoho.Trenz.Domain.Tests
         }
 
         [Fact]
-        public void TwoAmountsWithSameValueAndUnit_ShouldBeConsideredEqual()
+        public void OperatorEquals_TwoAmountsWithSameValueAndUnit_ShouldBeConsideredEqual()
         {
             var myUnit = new Unit("MyUnit", "mu");
             var a1 = new Amount(123.45M, myUnit);
@@ -48,7 +48,17 @@ namespace PaulRoho.Trenz.Domain.Tests
         }
 
         [Fact]
-        public void TwoAmountsWithDifferentValue_ShouldBeConsideredUnequal()
+        public void OperatorUnequals_TwoAmountsWithSameValueAndUnit_ShouldBeConsideredEqual()
+        {
+            var myUnit = new Unit("MyUnit", "mu");
+            var a1 = new Amount(123.45M, myUnit);
+            var a2 = new Amount(123.45M, myUnit);
+
+            (a1 != a2).Should().BeFalse();
+        }
+
+        [Fact]
+        public void OperatorEquals_TwoAmountsWithDifferentValue_ShouldBeConsideredUnequal()
         {
             var myUnit = new Unit("MyUnit", "mu");
             var a1 = new Amount(123.45M, myUnit);
@@ -58,7 +68,7 @@ namespace PaulRoho.Trenz.Domain.Tests
         }
 
         [Fact]
-        public void TwoAmountsWithDifferentUnits_ShouldBeConsideredUnequal()
+        public void OperatorEquals_TwoAmountsWithDifferentUnits_ShouldBeConsideredUnequal()
         {
             var unit1 = new Unit("My1stUnit", "m1u");
             var unit2 = new Unit("My2ndUnit", "m2u");
@@ -95,6 +105,19 @@ namespace PaulRoho.Trenz.Domain.Tests
             };
 
             act.ShouldThrow<InvalidOperationException>().WithMessage("*My1stUnit*My2ndUnit*");
+        }
+
+        [Fact]
+        public void ToString_ShowsValueAndUnitAbbreviation()
+        {
+            var unit = new Unit("Unit", "un");
+            var value = 123.45M;
+            var amount = new Amount(value, unit);
+
+            var actual = amount.ToString();
+
+            actual.Should().Contain(value.ToString());
+            actual.Should().Contain(unit.Abbr);
         }
     }
 }
