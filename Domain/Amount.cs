@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PaulRoho.Trenz.Domain
 {
@@ -37,6 +38,7 @@ namespace PaulRoho.Trenz.Domain
             return Equals((Amount) obj);
         }
 
+        [ExcludeFromCodeCoverage]
         public override int GetHashCode()
         {
             unchecked
