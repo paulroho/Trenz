@@ -5,6 +5,7 @@
     <AssemblyName>PaulRoho.Trenz.Domain</AssemblyName>
     <RootNamespace>PaulRoho.Trenz.Domain</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DebugType>Full</DebugType>
   </PropertyGroup>
 
 </Project>
