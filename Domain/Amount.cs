@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 namespace PaulRoho.Trenz.Domain
 {
-    public class Amount
+    public class Amount : IFormattable
     {
         public Amount(decimal value, Unit unit)
         {
@@ -65,7 +66,17 @@ namespace PaulRoho.Trenz.Domain
 
         public override string ToString()
         {
-            return $"{Value}{Unit}";
+            return ToString(CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return string.Format(formatProvider, "{0}{1}", Value, Unit);
+        }
+
+        public string ToString(IFormatProvider formatProvider)
+        {
+            return ToString(null, formatProvider);
         }
 
         #endregion

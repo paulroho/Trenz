@@ -1,5 +1,8 @@
 using System;
+using System.Globalization;
+using System.Threading;
 using FluentAssertions;
+using PaulRoho.Trenz.Domain.Tests.TestSupport;
 using Xunit;
 
 namespace PaulRoho.Trenz.Domain.Tests
@@ -118,6 +121,19 @@ namespace PaulRoho.Trenz.Domain.Tests
 
             actual.Should().Contain(value.ToString());
             actual.Should().Contain(unit.Abbr);
+        }
+
+        [Fact]
+        public void ToString_ConsidersThePassedFormatProvider()
+        {
+            var unit = Some.Unit;
+            var value = 123.45M;
+            var amount = new Amount(value, unit);
+
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("de-AT");
+            var actual = amount.ToString(CultureInfo.InvariantCulture);
+
+            actual.Should().Contain("123.45");
         }
     }
 }

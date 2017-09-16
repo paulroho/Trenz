@@ -32,9 +32,9 @@ namespace PaulRoho.Trenz.Domain.Tests
             var thePointInTime = Some.PointInTime;
             var sample = new Sample(theAmount, thePointInTime);
 
-            var actual = sample.ToString();
+            var actual = sample.ToString(CultureInfo.InvariantCulture);
 
-            actual.Should().Contain(theAmount.Value.ToString(CultureInfo.CurrentCulture));
+            actual.Should().Contain(theAmount.Value.ToString(CultureInfo.InvariantCulture));
             actual.Should().Contain(theAmount.Unit.Abbr);
             actual.Should().Contain(thePointInTime.Year.ToString());
             actual.Should().Contain(thePointInTime.Minute.ToString());
