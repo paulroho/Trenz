@@ -16,14 +16,14 @@ namespace PaulRoho.Trenz.Domain
 
         #region Formatting
 
-        public string ToString(IFormatProvider formatProvider)
+        public string ToString(IFormatProvider provider)
         {
-            return string.Format(formatProvider, "{0} @{1}", Amount, PointInTime);
+            return string.Format(provider, "{0} @{1}", Amount, PointInTime);
         }
 
         public override string ToString()
         {
-            return ToString(CultureInfo.CurrentUICulture);
+            return ToString(CultureInfo.CurrentCulture);
         }
 
         #endregion

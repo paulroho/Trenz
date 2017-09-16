@@ -12,5 +12,6 @@ namespace PaulRoho.Trenz.Domain.Tests.TestSupport
         public static string String(int length) => string.Join("", Enumerable.Range(1, length).Select(_ => (char) Random.Next('a', 'z')));
         public static decimal Value => (decimal) Random.NextDouble();
         public static DateTime PointInTime => DateTime.Now;
+        public static Sample Sample => new Sample(Some.Amount, Some.PointInTime);
     }
 }

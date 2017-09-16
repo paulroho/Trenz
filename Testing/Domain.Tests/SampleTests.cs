@@ -32,12 +32,22 @@ namespace PaulRoho.Trenz.Domain.Tests
             var thePointInTime = Some.PointInTime;
             var sample = new Sample(theAmount, thePointInTime);
 
-            var actual = sample.ToString(CultureInfo.InvariantCulture);
+            var actual = sample.ToString();
 
-            actual.Should().Contain(theAmount.Value.ToString(CultureInfo.InvariantCulture));
+            actual.Should().Contain(theAmount.Value.ToString());
             actual.Should().Contain(theAmount.Unit.Abbr);
             actual.Should().Contain(thePointInTime.Year.ToString());
             actual.Should().Contain(thePointInTime.Minute.ToString());
+        }
+
+        [Fact]
+        public void ToString_ConsidersTheFormatProvider()
+        {
+            var sample = Some.Sample.WithValue(123.45M);
+
+            var actual = sample.ToString(CultureInfo.GetCultureInfo("de-CH"));
+
+            actual.Should().Contain("123.45");
         }
     }
 }
