@@ -104,7 +104,7 @@ namespace PaulRoho.Trenz.Domain.Tests
                 var dummy = a1 + a2;
             };
 
-            act.ShouldThrow<InvalidOperationException>().WithMessage("*My1stUnit*My2ndUnit*");
+            act.ShouldThrow<InvalidOperationException>().WithMessage("*m1u*m2u*");
         }
 
         [Fact]

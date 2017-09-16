@@ -15,7 +15,7 @@ namespace PaulRoho.Trenz.Domain
 
         public override string ToString()
         {
-            return Name;
+            return Abbr;
         }
 
         protected bool Equals(Unit other)

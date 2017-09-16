@@ -59,7 +59,7 @@ namespace PaulRoho.Trenz.Domain
 
         public override string ToString()
         {
-            return $"{Value}{Unit.Abbr}";
+            return $"{Value}{Unit}";
         }
     }
 }

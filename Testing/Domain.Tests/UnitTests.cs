@@ -26,13 +26,13 @@ namespace PaulRoho.Trenz.Domain.Tests
         }
 
         [Fact]
-        public void ToString_RetrievesTheName()
+        public void ToString_RetrievesTheAbbreviation()
         {
             var unit = new Unit("MyUnit", "mu");
 
             string asString = unit.ToString();
 
-            asString.Should().Be("MyUnit");
+            asString.Should().Be("mu");
         }
 
         [Fact]
