@@ -1,8 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 namespace PaulRoho.Trenz.Domain
 {
-    public class Unit
+    public class Unit : IFormattable
     {
         public Unit(string name, string abbr)
         {
@@ -12,15 +14,6 @@ namespace PaulRoho.Trenz.Domain
 
         public string Name { get; }
         public string Abbr { get; }
-
-        #region Formatting
-
-        public override string ToString()
-        {
-            return Abbr;
-        }
-
-        #endregion
 
         #region Equality Checking
 
@@ -54,6 +47,37 @@ namespace PaulRoho.Trenz.Domain
         public static bool operator !=(Unit left, Unit right)
         {
             return !Equals(left, right);
+        }
+
+        #endregion
+
+        #region Formatting
+
+        public override string ToString()
+        {
+            return ToString(null, CultureInfo.InvariantCulture);
+        }
+
+        public string ToString(string format)
+        {
+            return ToString(format, null);
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            switch (format)
+            {
+                case null:
+                case "G":
+                case "A":
+                    return Abbr;
+
+                case "N":
+                    return Name;
+
+                default:
+                    throw new FormatException($"Format {format} is not supported.");
+            }
         }
 
         #endregion

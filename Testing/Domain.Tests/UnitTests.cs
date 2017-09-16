@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
+using PaulRoho.Trenz.Domain.Tests.TestSupport;
 using Xunit;
 
 namespace PaulRoho.Trenz.Domain.Tests
@@ -30,9 +32,61 @@ namespace PaulRoho.Trenz.Domain.Tests
         {
             var unit = new Unit("MyUnit", "mu");
 
-            string asString = unit.ToString();
+            var asString = unit.ToString();
 
             asString.Should().Be("mu");
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("G")]
+        [InlineData("A")]
+        public void ToString_WithFormatAorG_ReturnsTheAbbreviation(string format)
+        {
+            var unit = new Unit("MyUnit", "mu");
+
+            var asString = unit.ToString(format);
+
+            asString.Should().Be("mu");
+        }
+
+        [Theory]
+        [InlineData("N")]
+        public void ToString_WithFormatN_ReturnsTheName(string format)
+        {
+            var unit = new Unit("MyUnit", "mu");
+
+            var asString = unit.ToString(format);
+
+            asString.Should().Be("MyUnit");
+        }
+
+        [Theory]
+        [InlineData("g")]
+        [InlineData("a")]
+        [InlineData("n")]
+        [InlineData("anything")]
+        public void ToString_WithInvalidFormat_ThrowsAFormatException(string format)
+        {
+            var unit = Some.Unit;
+
+            Assert.Throws<FormatException>(
+                () => unit.ToString(format)
+            );
+        }
+
+        [Theory]
+        [InlineData("123 {0}", "123 kg")]
+        [InlineData("123{0:G}", "123kg")]
+        [InlineData("123{0:A}", "123kg")]
+        [InlineData("123 {0:N}s", "123 Kilograms")]
+        public void FormatString_IsConsideredInMixedStringFormats(string format, string expectedFormatted)
+        {
+            var unit = new Unit("Kilogram", "kg");
+
+            var actual = string.Format(format, unit);
+
+            actual.Should().Be(expectedFormatted);
         }
 
         [Fact]
