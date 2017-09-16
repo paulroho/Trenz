@@ -25,6 +25,8 @@ namespace PaulRoho.Trenz.Domain
             return new Amount(lhs.Value + rhs.Value, lhs.Unit);
         }
 
+        #region Equality Checking
+
         protected bool Equals(Amount other)
         {
             return Value == other.Value && Unit.Equals(other.Unit);
@@ -57,9 +59,15 @@ namespace PaulRoho.Trenz.Domain
             return !Equals(left, right);
         }
 
+        #endregion
+
+        #region Formatting
+
         public override string ToString()
         {
             return $"{Value}{Unit}";
         }
+
+        #endregion
     }
 }

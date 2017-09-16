@@ -14,6 +14,8 @@ namespace PaulRoho.Trenz.Domain
             PointInTime = pointInTime;
         }
 
+        #region Formatting
+
         public string ToString(IFormatProvider formatProvider)
         {
             return string.Format(formatProvider, "{0} @{1}", Amount, PointInTime);
@@ -23,5 +25,7 @@ namespace PaulRoho.Trenz.Domain
         {
             return ToString(CultureInfo.CurrentUICulture);
         }
+
+        #endregion
     }
 }

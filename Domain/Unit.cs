@@ -13,10 +13,16 @@ namespace PaulRoho.Trenz.Domain
         public string Name { get; }
         public string Abbr { get; }
 
+        #region Formatting
+
         public override string ToString()
         {
             return Abbr;
         }
+
+        #endregion
+
+        #region Equality Checking
 
         protected bool Equals(Unit other)
         {
@@ -49,5 +55,7 @@ namespace PaulRoho.Trenz.Domain
         {
             return !Equals(left, right);
         }
+
+        #endregion
     }
 }
