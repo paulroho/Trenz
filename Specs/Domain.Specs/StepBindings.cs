@@ -33,7 +33,7 @@ namespace PaulRoho.Trenz.Domain.Specs
         {
             var trend = _driver.Track.GetTrend(from, to);
 
-            expectedSamplesTable.CompareToSet(trend.Select(s => new {Sample = s.ToString(CultureInfo.InvariantCulture)}), sequentialEquality: true);
+            expectedSamplesTable.CompareToSet(trend.Select(s => new {Sample = s.ToString(CultureInfo.GetCultureInfo("sv"))}), sequentialEquality: true);
         }
 
         private Track CreateTrack(string trackName, Table paramTable)

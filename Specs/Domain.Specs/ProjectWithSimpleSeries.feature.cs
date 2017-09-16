@@ -85,7 +85,7 @@ this.ScenarioSetup(scenarioInfo);
                         "One each day"});
             table1.AddRow(new string[] {
                         "Seed",
-                        "0bf @1/1/2018"});
+                        "123bf @2018-01-01"});
 #line 5
 testRunner.Given("a Track \"Breakfasts\" with", ((string)(null)), table1, "Given ");
 #line 8
@@ -94,15 +94,16 @@ testRunner.Given("a Track \"Breakfasts\" with", ((string)(null)), table1, "Given
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Sample"});
             table2.AddRow(new string[] {
-                        "0bf @01/01/2018 00:00:00"});
+                        "123bf @2018-01-01 00:00:00"});
             table2.AddRow(new string[] {
-                        "1bf @01/02/2018 00:00:00"});
+                        "124bf @2018-01-02 00:00:00"});
             table2.AddRow(new string[] {
-                        "2bf @01/03/2018 00:00:00"});
+                        "125bf @2018-01-03 00:00:00"});
             table2.AddRow(new string[] {
-                        "3bf @01/04/2018 00:00:00"});
+                        "126bf @2018-01-04 00:00:00"});
 #line 10
-testRunner.When("I ask for the Amount of the Track \"Breakfasts\" from 1/1/2018 to 1/4/2018 I get", ((string)(null)), table2, "When ");
+testRunner.When("I ask for the Amount of the Track \"Breakfasts\" from 2018-01-01 to 2018-01-04 I ge" +
+                    "t", ((string)(null)), table2, "When ");
 #line hidden
             this.ScenarioCleanup();
         }
